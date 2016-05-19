@@ -1,0 +1,40 @@
+{
+  "name": "redux-modals-react",
+  "version": "0.1.0",
+  "description": "React library for redux-modals",
+  "main": "lib/redux-modals-react.min.js",
+  "files": [
+    "lib"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "WEBPACK_ENV=build webpack",
+    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm test -- --watch"
+  },
+  "author": "Jordan Enterkin",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.9.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "eslint": "^2.10.2",
+    "mocha": "^2.4.5",
+    "redux": "^3.5.2",
+    "redux-modals": "file:///Users/jenterkin/repos/redux-modals",
+    "webpack": "^1.13.0"
+  },
+  "dependencies": {
+    "redux-modals": "file:///Users/jenterkin/repos/redux-modals"
+  }
+}
