@@ -8,6 +8,33 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ setActive, setInactive }, dispatch);
 }
 
+class WrappedComponent extends Component {
+    static propTypes = {
+        modals: PropTypes.object.isRequired
+    }
+
+    getModalProps = () => {
+        const { modals, reducerKey } = this.props;
+        let modalData = {};
+        modals.forEach(modal => {
+            const isActive = this.props[reducerKey].active.indexOf(modal) !== -1;
+            const setActive = () => this.props.setActive(modal);
+            const setInactive = () => this.props.setInactive(modal);
+            modalData[modal] = {
+                isActive,
+                setActive,
+                setInactive,
+                toggle: () => (isActive) ? setInactive() : setActive()
+            };
+        });
+        return modalData;
+    }
+
+    render = () => <this.props.ChildComponent
+        {...this.props}
+        modalData={this.getModalProps()} />
+}
+
 /**
  * @function reduxModal
  * Wrapper component for managing the state of modals of the child Component
@@ -21,30 +48,12 @@ export function reduxModal(
         ChildComponent,
         modals,
         reducerKey="modals") {
-    class WrappedComponent extends Component {
-        static propTypes = {
-            modals: PropTypes.object.isRequired
+    return connect((state) => {
+        return {
+            [reducerKey]: state[reducerKey],
+            ChildComponent,
+            modals,
+            reducerKey
         }
-
-        getModalProps = () => {
-            let modalData = {};
-            modals.forEach(modal => {
-                const isActive = this.props[reducerKey].active.indexOf(modal) !== -1;
-                const setActive = () => this.props.setActive(modal);
-                const setInactive = () => this.props.setInactive(modal);
-                modalData[modal] = {
-                    isActive,
-                    setActive,
-                    setInactive,
-                    toggle: () => (isActive) ? setInactive() : setActive()
-                };
-            });
-            return modalData;
-        }
-
-        render = () => <ChildComponent
-            {...this.props}
-            modalData={this.getModalProps()} />
-    }
-    return connect((state) => { return { [reducerKey]: state[reducerKey] } }, mapDispatchToProps)(WrappedComponent)
+    }, mapDispatchToProps)(WrappedComponent)
 }
