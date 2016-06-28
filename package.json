@@ -31,10 +31,10 @@
     "eslint": "^2.10.2",
     "mocha": "^2.4.5",
     "redux": "^3.5.2",
-    "redux-modals": "file:///Users/jenterkin/repos/redux-modals",
+    "redux-modals": "^0.1.0",
     "webpack": "^1.13.0"
   },
   "dependencies": {
-    "redux-modals": "file:///Users/jenterkin/repos/redux-modals"
+    "redux-modals": "^0.1.0"
   }
 }
