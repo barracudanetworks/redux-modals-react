@@ -76,5 +76,6 @@ class App extends Component {
     }
 }
 
-export default wrappers.reduxModal(App, ["first", "second", "third"])
+// The third argument is the name of the reducer. Defaults to 'modals'.
+export default wrappers.reduxModal(App, ["first", "second", "third"], "modalsReducer")
 ```
