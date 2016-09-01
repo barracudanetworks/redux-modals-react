@@ -1,6 +1,6 @@
 {
   "name": "redux-modals-react",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "React library for redux-modals",
   "main": "lib/redux-modals-react.min.js",
   "files": [
