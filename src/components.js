@@ -35,7 +35,7 @@ export class ReduxModal extends Component {
     }
 
     render = () => <this.props.ChildComponent
-        {...this.props}
-        modalData={this.getModalProps()} />
+        modalData={this.getModalProps()}
+        {...this.props} />
 }
 
